@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Players Looking for Roster</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Players Looking for Roster{% endblock %}
+
+{% block content %}
     <h1>Players Looking for Roster</h1>
     {% if players %}
         <ul>
@@ -16,5 +13,15 @@
     {% else %}
         <p>No players looking for a roster.</p>
     {% endif %}
-</body>
-</html>
+
+    <h2>Recent Scripts</h2>
+    {% if recent_scripts %}
+        <ul>
+            {% for script in recent_scripts %}
+                <li>{{ script.name }} ({{ script.platform }}) - Uploaded by {{ script.uploaded_by }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recent scripts available.</p>
+    {% endif %}
+{% endblock %}
